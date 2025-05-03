@@ -1,0 +1,73 @@
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-row {
+    display: flex;
+    align-items: center;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cgap-25 {
+    column-gap: 25px;
+}
+
+.rgap-25 {
+    row-gap: 25px;
+}
+
+.rgap-15 {
+    row-gap: 15px;
+}
+
+.btn {
+    border: 1px solid black;
+    border-radius: 10px;
+    font-weight: 700;
+    background-color: white;
+    color: black;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: rgb(223, 221, 221);
+}
+
+.btn-lg {
+    padding: 10px 18px;
+}
+
+.btn-sl {
+    padding: 6px 12px;
+}
+
+.p-10 {
+    padding: 10px;
+}
+
+.m-10 {
+    margin: 10px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.align-center {
+    margin: 0px auto;
+}
+
+.list-none {
+    list-style: none;
+}
+
+.hide{
+    display: none;
+}
