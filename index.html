@@ -6,31 +6,42 @@
     <title>My Weather App</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="utility.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-Kd5U..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/x-icon" href="favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+    <link rel="manifest" href="favicons/site.webmanifest">
 </head>
 <body>
     <header>
-        <nav class="navbar">
-
+        <nav class="navbar flex-row p-5">
+            <a href = "http://127.0.0.1:3000/index.html">
+                <div class="app flex-row">
+                    <img id="logo" src="assets/images/logo.png" alt="WeatherNow">
+                    <h1 class="tcol">WeatherNow</h1>
+                </div>
+            </a>
         </nav>
     </header>
     <main>
-        <div class="container flex-col rgap-25 m-10">
-            <div class="welcome flex-col p-10 rgap-15 m-10 text-center">
-                <h1>Weather App</h1>
+        <div id="container" class="flex-col rgap-25 m-10">
+            <div id="welcome" class="flex-col p-10 rgap-15 m-10 text-center">
+                <h1 class="title">How's Weather?</h1>
                 <p>Know Weather in your area on one click</p>
                 <div class="city-input">
-                    <input class="p-10" type="text" name="City-Name" id="City" placeholder="Enter city ...">
-                    <button class="btn btn-lg">Go</button>
+                    <input class="p-10" type="text" name="City-Name" id="city" placeholder="Enter city ...">
+                    <button id="go" class="btn btn-lg">Go</button>
                 </div>
             </div>
-            <div class="weather-details flex-center cgap-25">
+            <div id="weather-details" class="flex-center cgap-25">
                 
             </div>
         </div>
     </main>
-    <footer>
-        <h4></h4>
-        <h4></h4>
+    <footer class="p-10 text-center">
+        <h4>© 2025 WeatherNow · Made by Abhishek | <a href="https://github.com/Abhishek91K"><i class="fab fa-github"></i></a> | <a href="https://www.linkedin.com/in/abhishek91k/"><i class="fab fa-linkedin"></i></a></h4>
     </footer>
 
 

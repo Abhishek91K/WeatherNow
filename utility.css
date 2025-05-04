@@ -27,17 +27,26 @@
     row-gap: 15px;
 }
 
+.rgap-5{
+    row-gap: 5px;
+}
+
+.tcol{
+    color: white;
+}
+
 .btn {
-    border: 1px solid black;
+    border: none;
     border-radius: 10px;
-    font-weight: 700;
-    background-color: white;
-    color: black;
+    font-weight: 600;
+    color: white;
+    background-color: rgb(255, 162, 0);
 }
 
 .btn:hover {
     cursor: pointer;
-    background-color: rgb(223, 221, 221);
+    background-color: rgb(233, 127, 22);
+    font-weight: 700;
 }
 
 .btn-lg {
@@ -46,6 +55,10 @@
 
 .btn-sl {
     padding: 6px 12px;
+}
+
+.p-5{
+    padding: 0 5px;
 }
 
 .p-10 {
@@ -70,4 +83,18 @@
 
 .hide{
     display: none;
+}
+
+.effect{
+    background: none;
+    animation: fadeBlocks 2s ease-out forwards;
+}
+
+@keyframes fadeBlcoks {
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0.2;
+    }
 }
