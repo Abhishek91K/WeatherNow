@@ -116,9 +116,14 @@ const addElement = (data) =>{
 }
 
 
-async function fetchData() {
-    let city = document.getElementById("city").value;
-    if (!city.trim()) return alert("Please enter a city!");
+async function fetchData(city = null) {
+    if (!city) {
+        city = document.getElementById("city").value.trim();
+        if (!city) {
+            alert("Please enter a city!");
+            return;
+        }
+    }
     let data = await getData(city);
     if(data == null){
         document.getElementById("city").value = "";
@@ -135,9 +140,8 @@ async function main() {
             const data = await getDataByCoords(lat, lon);
             if (data) addElement(data);
         },
-        (error) => {
-            console.warn(`Geolocation not available or denied : ${error}`);
-            fetchData("Delhi");
+        async (error) => {
+            await fetchData("Delhi");
         }
     );
 
