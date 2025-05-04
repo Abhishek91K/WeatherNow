@@ -95,6 +95,11 @@ h2{
     margin-bottom: 10px;
 }
 
+.indication {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
 .other-data h4{
     padding: 15px 0;
     margin-bottom: 5px;
@@ -186,6 +191,9 @@ footer {
 
 @media screen and (max-width: 400px) {
     #welcome{
+        width: 90vw;
+    }
+    .card{
         width: 85vw;
     }
 }

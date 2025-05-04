@@ -16,6 +16,29 @@ const weatherStyles = [
     { type: "clouds", color: "#d6dbe0" }         // light cloudy grey
 ];
 
+function getWeatherEmoji(condition) {
+    const emojiMap = {
+        thunderstorm: "⛈️",
+        drizzle: "🌦️",
+        rain: "🌧️",
+        snow: "❄️",
+        mist: "🌫️",
+        smoke: "💨",
+        haze: "🌁",
+        dust: "🌪️",
+        fog: "🌁",
+        sand: "🏜️",
+        ash: "🌋",
+        squall: "🌬️",
+        tornado: "🌪️",
+        clear: "☀️",
+        clouds: "☁️"
+    };
+
+    return emojiMap[condition.toLowerCase()] || "🌍"; // fallback emoji
+}
+
+
 async function getData(city) {
     try{
         let x = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0521b51688d5ed8a6bb8c6a7100e9996&units=metric`);
@@ -53,6 +76,9 @@ const addElement = (data) =>{
     let div = document.getElementById("weather-details");
     div.innerHTML = `<div class="loader"> </div>`;
 
+    let condition = data.weather[0].main.toLowerCase();
+    let emoji = getWeatherEmoji(condition);
+
     let div1 = document.createElement("div");
     div1.classList.add("card", "main-data", "flex-col", "rgap-5");
     let img_link = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
@@ -61,7 +87,7 @@ const addElement = (data) =>{
                     <h4>Feels Like ${Math.round(data.main.feels_like)}&deg; C</h4>
                     <div class="image flex-center">
                         <img src="${img_link}" alt="Unknown">
-                        <span class="indication">${data.weather[0].main}</span>
+                        <span class="indication">${data.weather[0].main} ${emoji}</span>
                     </div>
 
                     <h4 class="humidity">Humidity : ${data.main.humidity}%</h4>
@@ -78,7 +104,6 @@ const addElement = (data) =>{
     document.getElementById("city").value = "";
 
     let Wconditions = data.weather[0].main.toLowerCase();
-
     let style = weatherStyles.find(obj => obj.type === Wconditions);
     let bcolor = style ? style.color : "#ffffff"; // fallback to white
     document.body.style.backgroundColor = bcolor;
@@ -112,6 +137,7 @@ async function main() {
         },
         (error) => {
             console.warn(`Geolocation not available or denied : ${error}`);
+            fetchData("Delhi");
         }
     );
 
