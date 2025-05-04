@@ -1,6 +1,6 @@
 # 🌤️ WeatherNow – Real-time Weather App
 
-WeatherNow is a fully responsive, dynamic weather forecasting web application that fetches real-time weather data using the OpenWeatherMap API. It provides a clean, animated interface with city-wise forecasts, icons, visibility, temperature, wind speed, and more.
+WeatherNow is a sleek, responsive web application that provides instant weather updates using the OpenWeatherMap API. It detects your location automatically on page load and also allows manual city search. With emoji-enhanced UI, weather-based backgrounds, and animated transitions, this project reflects a production-grade front-end implementation.
 
 ---
 
@@ -12,16 +12,17 @@ WeatherNow is a fully responsive, dynamic weather forecasting web application th
 
 ## ✨ Features
 
-- 🔍 City-based weather search
-- 📡 Real-time weather data using OpenWeatherMap API
-- 🎨 Dynamic background colors based on weather condition
-- 🌡️ Displays temperature, humidity, pressure, visibility, wind speed
-- 🌥️ Animated loader and fade-in quote effect
-- ⚠️ Smart error handling (404 city not found)
-- 💬 Weather condition emoji integration
-- 📱 Fully responsive across devices
-- 🧭 Favicon, Google Fonts, and modern branding
-- 🔗 Footer with GitHub and LinkedIn links
+- 📍 **Auto-detect current location** using Geolocation API
+- 🔍 **Manual city search** with validation and feedback
+- ☁️ **Real-time weather data** (temperature, humidity, wind, pressure)
+- 🎨 **Dynamic background colors** and fade animations based on weather
+- ⏳ **Animated loader** while data is being fetched
+- ⚠️ **404 fallback alert** for invalid or unrecognized city input
+- 📱 **Fully responsive** layout (desktop, tablet, and mobile)
+- 🌥️ **Weather condition emoji** beside label (e.g. ☀️, 🌧️, ❄️)
+- 🧠 Clean, modular **code architecture** using async/await and JS best practices
+- 🖼️ Custom favicon and branding with logo
+- 🔗 Footer with GitHub and LinkedIn profile links
 
 ---
 
@@ -60,3 +61,5 @@ WeatherNow is a fully responsive, dynamic weather forecasting web application th
 1. Clone this repo:
 ```bash
 git clone https://github.com/Abhishek91K/WeatherNow
+
+

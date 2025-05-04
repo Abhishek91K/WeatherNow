@@ -34,25 +34,30 @@ async function getData(city) {
     }
 }
 
-async function fetchData() {
-    let city = document.getElementById("city").value;
-    if (!city.trim()) return alert("Please enter a city!");
-    let data = await getData(city);
-    if(data == null){
-        document.getElementById("city").value = "";
-        return;
-    }
+async function getDataByCoords(lat, lon) {
+    try {
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=0521b51688d5ed8a6bb8c6a7100e9996&units=metric`);
+        const data = await res.json();
 
+        if (data.cod !== 200) throw new Error(data.message);
+        return data;
+    } catch (error) {
+        alert("Couldn't get your location-based weather.");
+        return null;
+    }
+}
+
+const addElement = (data) =>{
     document.getElementById("welcome").classList.toggle("effect");
 
     let div = document.getElementById("weather-details");
     div.innerHTML = `<div class="loader"> </div>`;
-    
+
     let div1 = document.createElement("div");
-    div1.classList.add("card", "main-data","flex-col","rgap-5");
+    div1.classList.add("card", "main-data", "flex-col", "rgap-5");
     let img_link = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
     div1.innerHTML = `<h2 class="city-selected">${data.name}, ${data.sys.country}</h2>
-                    <h2 class="temp">${Math.round(data.main.temp*10)/10}&deg; C</h2>
+                    <h2 class="temp">${Math.round(data.main.temp * 10) / 10}&deg; C</h2>
                     <h4>Feels Like ${Math.round(data.main.feels_like)}&deg; C</h4>
                     <div class="image flex-center">
                         <img src="${img_link}" alt="Unknown">
@@ -60,7 +65,7 @@ async function fetchData() {
                     </div>
 
                     <h4 class="humidity">Humidity : ${data.main.humidity}%</h4>
-                    <h4 class="wind">Wind Speed : ${(Math.round(data.wind.speed*10))/10} m/s</h4>`;
+                    <h4 class="wind">Wind Speed : ${(Math.round(data.wind.speed * 10)) / 10} m/s</h4>`;
 
     let div2 = document.createElement("div");
     div2.classList.add("card", "other-data");
@@ -68,7 +73,7 @@ async function fetchData() {
                     <h4 class="abs-temp">Temperature : ${Math.round(data.main.temp * 10) / 10}&deg; C</h4>                    
                     <h4>Pressure: ${data.main.pressure} hPa</h4>
                     <h4>High/Low: ${Math.round(data.main.temp_max * 10) / 10}&deg; C/${Math.round(data.main.temp_min * 10) / 10}&deg; C</h4>
-                    <h4>Visibility: ${Math.round(data.visibility*10)/10000} km</h4>`;
+                    <h4>Visibility: ${Math.round(data.visibility * 10) / 10000} km</h4>`;
 
     document.getElementById("city").value = "";
 
@@ -79,14 +84,38 @@ async function fetchData() {
     document.body.style.backgroundColor = bcolor;
     document.body.classList.add("fade");
 
-    setTimeout(()=>{
+    setTimeout(() => {
         div.innerHTML = "";
         div.append(div1, div2);
-    },2000);
+    }, 2000);
+}
 
+
+async function fetchData() {
+    let city = document.getElementById("city").value;
+    if (!city.trim()) return alert("Please enter a city!");
+    let data = await getData(city);
+    if(data == null){
+        document.getElementById("city").value = "";
+        return;
+    }
+    addElement(data);
 }
 
 async function main() {
+    navigator.geolocation.getCurrentPosition(
+        async (position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            const data = await getDataByCoords(lat, lon);
+            if (data) addElement(data);
+        },
+        (error) => {
+            console.warn(`Geolocation not available or denied : ${error}`);
+        }
+    );
+
+
     let get_city = document.getElementById("go");
     get_city.addEventListener("click", () => {
         fetchData();
