@@ -15,7 +15,7 @@ WeatherNow is a sleek, responsive web application that provides instant weather 
 - 📍 **Auto-detect current location** using Geolocation API
 - 🔍 **Manual city search** with validation and feedback
 - ☁️ **Real-time weather data** (temperature, humidity, wind, pressure)
-- 🎨 **Dynamic background colors** and fade animations based on weather
+- 🎨 **Dynamic background colors** and fade animations based on weather 
 - ⏳ **Animated loader** while data is being fetched
 - ⚠️ **404 fallback alert** for invalid or unrecognized city input
 - 📱 **Fully responsive** layout (desktop, tablet, and mobile)
